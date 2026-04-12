@@ -1,16 +1,16 @@
 # Human_Pancreas_DM2_Expression (grupo13-IPC)
-Este repositorio documenta un análisis transcriptómico de la diabetes tipo 2 en pancreas humano, empleando microarreglos Illumina. El código aplica normalización y estadística bayesiana empírica para aislar vías diferencialmente expresadas, identificando biomarcadores con potencial utilidad.
+Este repositorio documenta un análisis de metilómica de ADN de la diabetes tipo 2 en pancreas humano, empleando microarreglos Illumina. El código aplica normalización y estadística bayesiana empírica para aislar vías diferencialmente expresadas, identificando biomarcadores con potencial utilidad.
 
 ## Descripción del proyecto
 Este repositorio contiene un análisis transcriptómico de la diabetes tipo 2 en páncreas humano, utilizando datos de microarreglos Illumina.
 
 ## Propósito
-Organizar y documentar un flujo de trabajo reproducible para el análisis de expresión génica diferencial.
+Organizar y documentar un flujo de trabajo reproducible para análisis de metilómica de ADN  génica diferencial.
 
 ## Objetivos
 - Organizar los datos y scripts del proyecto
 - Aplicar un flujo de preprocesamiento y normalización
-- Identificar genes o vías diferencialmente expresadas
+- Identificar genes o vías diferencialmente metilados
 - Generar resultados reproducibles y documentados
 
 ## Estructura del repositorio
