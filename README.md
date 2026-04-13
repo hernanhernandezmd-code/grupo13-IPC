@@ -1,4 +1,4 @@
-# Human_Pancreas_DM2_Expression (grupo13-IPC)
+# Human_Pancreas_DM2_Metilación (grupo13-IPC)
 Este repositorio documenta un análisis de metilómica de ADN de la diabetes tipo 2 en pancreas humano, empleando microarreglos Illumina. El código aplica normalización y estadística bayesiana empírica para aislar vías diferencialmente expresadas, identificando biomarcadores con potencial utilidad.
 
 ## Descripción del proyecto
