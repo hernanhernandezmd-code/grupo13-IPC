@@ -2,7 +2,7 @@
 Este repositorio documenta un análisis de metilómica de ADN de la diabetes tipo 2 en pancreas humano, empleando microarreglos Illumina. El código aplica normalización y estadística bayesiana empírica para aislar vías diferencialmente expresadas, identificando biomarcadores con potencial utilidad.
 
 ## Descripción del proyecto
-Este repositorio contiene un análisis transcriptómico de la diabetes tipo 2 en páncreas humano, utilizando datos de microarreglos Illumina.
+Este repositorio contiene un análisis metilómico de la diabetes tipo 2 en páncreas humano, utilizando datos de microarreglos Illumina.
 
 ## Propósito
 Organizar y documentar un flujo de trabajo reproducible para análisis de metilómica de ADN  génica diferencial.
