@@ -1,1 +1,24 @@
+# Verificar la instalación del gestor de paquetes principal de Bioconductor
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+if (!requireNamespace("GEOquery", quietly = TRUE)) BiocManager::install("GEOquery")
+library(GEOquery)
 
+ruta_directorio <- file.path("grupo13-IPC", "data")
+
+# Descargamos la matriz unificada directamente desde los repositorios de NCBI
+repositorio_geo <- getGEO("GSE21232", GSEMatrix = TRUE)
+objeto_completo <- repositorio_geo[]
+
+# Aislamos las variables clínicas en un dataframe para exportarlas como texto plano
+matriz_fenotipica <- pData(objeto_completo[[1]])
+write.csv(matriz_fenotipica, file = file.path(ruta_directorio, "phenodata_diabetes.csv"), row.names = FALSE)
+
+# Extraemos numéricamente las intensidades génicas y las compilamos en el disco duro
+datos_expresion <- exprs(objeto_completo[[1]])
+save(datos_expresion, file = file.path(ruta_directorio, "metilation_GSE21232.RData"))
+
+# Parametrizar el archivo de salida local con la nomenclatura requerida
+ruta_exportacion <- file.path(ruta_directorio, "phenodata_diabetes.csv")
+
+# Exportar la matriz fenotípica delimitada por comas garantizando la integridad tabular
+write.csv(matriz_fenotipica, file = ruta_exportacion, row.names = FALSE)
