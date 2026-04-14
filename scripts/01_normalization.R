@@ -2,9 +2,9 @@
 # =============================================================================
 # Script: 01_normalization.R
 # Tarea: Normalización de datos de microarreglos Illumina (diabetes tipo 2)
-# Métodos: Corrección de fondo (normexp) + Normalización quantile
+# Métodos:  Normalización quantile
 # Autor: Equipo de Bioinformática
-# Fecha: 2025-04-11 (simulación)
+# Fecha: 2026-04-11
 # =============================================================================
 
 # -----------------------------------------------------------------------------
@@ -43,22 +43,21 @@ cat("===== LOG DE NORMALIZACIÓN =====\n")
 cat("Fecha y hora:", as.character(Sys.time()), "\n\n")
 
 # -----------------------------------------------------------------------------
-# Verificar la instalación del gestor de paquetes principal de Bioconductor
+# Verificamos la instalación del gestor BiocManager
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
   install.packages("BiocManager")
 }
 
-ruta <- "grupo13-IPC/data/expresion_GSE21232.RData"  # Ruta de carga
-load(ruta)
+# Instalamos y cargamos la librería estadística base
+if (!require("limma")) BiocManager::install("limma")
+library(limma)                                      # Dependencia
 
-# Descartamos sondas con NAs para asegurar la integridad biológica
-datos_filt <- datos_expresion[complete.cases(datos_expresion), ] # Filtro
+ruta <- "grupo13-IPC/data/expresion_GSE21232.RData"
+load(ruta)                                          # Carga matriz
 
-# Convertimos proporciones Beta a valores M para habilitar estadística
-valores_m <- log2(datos_filt / (1 - datos_filt))                 # Normaliza
+# Normalizamos directamente las proporciones Beta con cuantiles
+datos_norm <- normalizeBetweenArrays(datos_expresion) # Normaliza
 
-ruta_out <- "grupo13-IPC/data/norm_GSE21232.RData"   # Ruta exportación
-save(valores_m, file = ruta_out)
-
-# Mensaje en consola
+ruta_out <- "grupo13-IPC/data/norm_GSE21232.RData"
+save(datos_norm, file = ruta_out)                   # Exportación
 cat("Proceso finalizado. Revisar el log en:", log_file, "\n")
