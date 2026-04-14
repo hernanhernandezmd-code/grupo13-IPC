@@ -1,3 +1,4 @@
+
 #!/usr/bin/env Rscript
 # =============================================================================
 # Script: 01_normalization.R
@@ -43,31 +44,21 @@ cat("===== LOG DE NORMALIZACIÓN =====\n")
 cat("Fecha y hora:", as.character(Sys.time()), "\n\n")
 
 # -----------------------------------------------------------------------------
-# Verificar la instalación del gestor de paquetes principal de Bioconductor
+# Verificamos la instalación del gestor BiocManager
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
   install.packages("BiocManager")
 }
 
-# Instalamos el paquete principal y el manifiesto genómico para los 27k
-if (!require("minfi")) BiocManager::install("minfi")
-if (!require("IlluminaHumanMethylation27kmanifest")) {
-  BiocManager::install("IlluminaHumanMethylation27kmanifest")
-}
+# Instalamos y cargamos la librería estadística base
+if (!require("limma")) BiocManager::install("limma")
+library(limma)                                      # Dependencia
 
-library(minfi)                                    # Carga algorítmica
+ruta <- "grupo13-IPC/data/expresion_GSE21232.RData"
+load(ruta)                                          # Carga matriz
 
-# Definimos la ruta donde se deben alojar los archivos IDAT crudos
-ruta_idat <- "grupo13-IPC/data/idat_files"        # Directorio base
+# Normalizamos directamente las proporciones Beta con cuantiles
+datos_norm <- normalizeBetweenArrays(datos_expresion) # Normaliza
 
-# Leemos recursivamente las intensidades de fluorescencia dicromáticas
-objetos_rg <- read.metharray.exp(base = ruta_idat)# Lectura primaria
-
-# Ejecutamos la normalización robusta con el algoritmo de cuantiles
-objeto_norm <- preprocessQuantile(objetos_rg)     # Ajuste estadístico
-
-# Extraemos directamente los valores M estabilizados y homocedásticos
-valores_m_minfi <- getM(objeto_norm)              # Transformación M
-
-# Parametrizamos la exportación hacia el disco duro asegurando la ruta
-ruta_out <- "grupo13-IPC/data/minfi_GSE21232.RData"
-save(valores_m_minfi, file = ruta_out)            # Almacenamiento
+ruta_out <- "grupo13-IPC/data/norm_GSE21232.RData"
+save(datos_norm, file = ruta_out)                   # Exportación
+cat("Proceso finalizado. Revisar el log en:", log_file, "\n")
