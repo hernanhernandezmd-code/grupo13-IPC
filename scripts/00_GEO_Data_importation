@@ -1,3 +1,4 @@
+
 # Verificar la instalación del gestor de paquetes principal de Bioconductor
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
 if (!requireNamespace("GEOquery", quietly = TRUE)) BiocManager::install("GEOquery")
@@ -16,15 +17,6 @@ write.csv(matriz_fenotipica, file = file.path(ruta_directorio, "phenodata_diabet
 # Extraemos numéricamente las intensidades génicas y las compilamos en el disco duro
 datos_expresion <- exprs(objeto_completo[[1]])
 save(datos_expresion, file = file.path(ruta_directorio, "metilation_GSE21232.RData"))
-
-# Importar el objeto matricial masivo desde el repositorio genómico GEO
-repositorio_geo <- getGEO("GSE21232", GSEMatrix = TRUE)
-
-# Extraer el conjunto de expresión primario de la estructura iterativa resultante
-matriz_expresion <- repositorio_geo[]
-
-# Aislar computacionalmente el fenotipo clínico o pData asociado a los arreglos
-matriz_fenotipica <- pData(matriz_expresion)
 
 # Parametrizar el archivo de salida local con la nomenclatura requerida
 ruta_exportacion <- file.path(ruta_directorio, "phenodata_diabetes.csv")
