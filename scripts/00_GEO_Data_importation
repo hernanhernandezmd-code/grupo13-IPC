@@ -1,4 +1,3 @@
-
 # Verificar la instalación del gestor de paquetes principal de Bioconductor
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
 if (!requireNamespace("GEOquery", quietly = TRUE)) BiocManager::install("GEOquery")
