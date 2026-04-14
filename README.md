@@ -30,7 +30,7 @@ Organizar y documentar un flujo de trabajo reproducible para an√°lisis de metil√
 ## Herramientas utilizadas
 - Git y GitHub
 - Bash
-- Python o R
+- R/Bioconnductor
 - Microarreglos Illumina
 
 ## Licencia
