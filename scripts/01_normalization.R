@@ -2,9 +2,9 @@
 # =============================================================================
 # Script: 01_normalization.R
 # Tarea: Normalización de datos de microarreglos Illumina (diabetes tipo 2)
-# Métodos: Corrección de fondo (normexp) + Normalización quantile
-# Autor: Equipo de Bioinformática
-# Fecha: 2025-04-11 (simulación)
+# Métodos: Corrección de fondo + Normalización quantile
+# Autor: Equipo de Bioinformática G13
+# Fecha: 2026-04-11 
 # =============================================================================
 
 # -----------------------------------------------------------------------------
@@ -48,17 +48,26 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
   install.packages("BiocManager")
 }
 
-ruta <- "grupo13-IPC/data/expresion_GSE21232.RData"  # Ruta de carga
-load(ruta)
+# Instalamos el paquete principal y el manifiesto genómico para los 27k
+if (!require("minfi")) BiocManager::install("minfi")
+if (!require("IlluminaHumanMethylation27kmanifest")) {
+  BiocManager::install("IlluminaHumanMethylation27kmanifest")
+}
 
-# Descartamos sondas con NAs para asegurar la integridad biológica
-datos_filt <- datos_expresion[complete.cases(datos_expresion), ] # Filtro
+library(minfi)                                    # Carga algorítmica
 
-# Convertimos proporciones Beta a valores M para habilitar estadística
-valores_m <- log2(datos_filt / (1 - datos_filt))                 # Normaliza
+# Definimos la ruta donde se deben alojar los archivos IDAT crudos
+ruta_idat <- "grupo13-IPC/data/idat_files"        # Directorio base
 
-ruta_out <- "grupo13-IPC/data/norm_GSE21232.RData"   # Ruta exportación
-save(valores_m, file = ruta_out)
+# Leemos recursivamente las intensidades de fluorescencia dicromáticas
+objetos_rg <- read.metharray.exp(base = ruta_idat)# Lectura primaria
 
-# Mensaje en consola
-cat("Proceso finalizado. Revisar el log en:", log_file, "\n")
+# Ejecutamos la normalización robusta con el algoritmo de cuantiles
+objeto_norm <- preprocessQuantile(objetos_rg)     # Ajuste estadístico
+
+# Extraemos directamente los valores M estabilizados y homocedásticos
+valores_m_minfi <- getM(objeto_norm)              # Transformación M
+
+# Parametrizamos la exportación hacia el disco duro asegurando la ruta
+ruta_out <- "grupo13-IPC/data/minfi_GSE21232.RData"
+save(valores_m_minfi, file = ruta_out)            # Almacenamiento
