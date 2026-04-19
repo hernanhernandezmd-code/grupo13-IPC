@@ -1,50 +1,44 @@
-# Human_Pancreas_DM2_Metilación (grupo13-IPC)
-Este repositorio documenta un análisis de metilómica de ADN de la diabetes tipo 2 en pancreas humano, empleando microarreglos Illumina. El código aplica normalización y estadística bayesiana empírica para aislar vías diferencialmente expresadas, identificando biomarcadores con potencial utilidad.
+# Análisis metilómico en diabetes tipo 2 en páncreas humano (grupo13-IPC)
+Este repositorio documenta un análisis metilómico de ADN en muestras de páncreas humano asociadas a diabetes tipo 2, empleando microarreglos Illumina. El código aplica procesos de normalización y estadística bayesiana empírica para identificar genes o regiones diferencialmente metiladas, permitiendo explorar biomarcadores epigenéticos con potencial utilidad.
 
 ## Descripción del proyecto
-Este repositorio contiene un análisis metilómico de la diabetes tipo 2 en páncreas humano, utilizando datos de microarreglos Illumina.
+Este repositorio contiene un análisis metilómico en muestras de páncreas humano asociadas a diabetes tipo 2, basado en datos de microarreglos Illumina.
 
 ## Propósito
-Organizar y documentar un flujo de trabajo reproducible para análisis de metilómica de ADN  génica diferencial.
+Organizar y documentar un flujo de trabajo reproducible para el análisis metilómico del ADN y la identificación de patrones de metilación diferencial.
 
 ## Objetivos
 - Organizar los datos y scripts del proyecto
 - Aplicar un flujo de preprocesamiento y normalización
-- Identificar genes o vías diferencialmente metilados
-- Generar resultados reproducibles y documentados
+- Identificar genes o regiones diferencialmente metiladas
+- Generar resultados reproducibles y debidamente documentados
 
 ## Estructura del repositorio
-- `data/`: datos del proyecto
-- `scripts/`: scripts de análisis
-- `results/`: resultados generados
-- `docs/`: documentación adicional
-- `notebooks/`: análisis exploratorio
+- `data/`: datos crudos y procesados del proyecto
+- `scripts/`: scripts de preprocesamiento y análisis
+- `results/`: resultados generados, incluyendo tablas y figuras
+- `docs/`: documentación adicional del flujo de trabajo
+- `notebooks/`: análisis exploratorio y pruebas preliminares
 
 ## Instrucciones de uso
-1. Clonar el repositorio
-2. Ubicar los datos en `data/raw/`
-3. Ejecutar los scripts de preprocesamiento
-4. Ejecutar los scripts de análisis
-5. Revisar resultados en la carpeta `results/`
+1. Clonar el repositorio.
+2. Ubicar los datos de entrada en la carpeta correspondiente dentro de `data/`.
+3. Ejecutar los scripts de preprocesamiento ubicados en `scripts/`.
+4. Ejecutar los scripts de análisis diferencial.
+5. Revisar los resultados generados en la carpeta `results/`.
 
-## Interpretacion biológica 
-A partir del análisis metilomico realizado, se identifican diferencias en los patrones de metilación entre muestras control y aquellas asociadas a diabetes tipo 2.
-Se observa que algunos genes relacionados con la funcion pancreática presentan cambios en su nivel de metilación, lo cual podría influir en su expresión y en la regulación de procesos metabólicos.
-Asimismo, se evidencian posibles alteraciones en genes asociados a procesos inflamatorios, lo cual es consistente con el papel de la inflamación en el desarrollo de la diabetes tipo 2.
-Estos resultados permiten identificar posibles biomarcadores epigeneticos con potencial relevancia en el estudio de la enfermedad.
-
+## Interpretación biológica
+A partir del análisis metilómico realizado, se identifican diferencias en los patrones de metilación entre muestras control y aquellas asociadas a diabetes tipo 2. Se observa que algunos genes relacionados con la función pancreática presentan cambios en su nivel de metilación, lo cual podría influir en su regulación y en procesos metabólicos relevantes. Asimismo, se evidencian posibles alteraciones en genes asociados a procesos inflamatorios, lo cual resulta consistente con el papel de la inflamación en el desarrollo de la diabetes tipo 2. Estos hallazgos permiten identificar posibles biomarcadores epigenéticos con potencial relevancia para el estudio de la enfermedad.
 
 ## Herramientas utilizadas
 - Git y GitHub
 - Bash
-- R/Bioconnductor
+- R/Bioconductor
 - Microarreglos Illumina
 - Python
 
 ## Conclusión
-Este proyecto permitió estructurar y documentar un flujo de trabajo orientado al analisis metilómico en el contexto de la diabetes tipo 2.
-A traves de la organizacion de datos, aplicación de procesos de normalización y análisis diferencial, se logró simular un enfoque bioinformatico utlizado en estudios reales.
-El repositorio facilita la reproducibilidad del análisis y contribuye a la comprensión de como los cambios epigenéticos pueden estar relacionados con el desarollo de enfermedades metabólicas.
+Este proyecto permitió estructurar y documentar un flujo de trabajo orientado al análisis metilómico en el contexto de la diabetes tipo 2. A través de la organización de datos y la aplicación de procesos de normalización y análisis diferencial, se logró simular un enfoque bioinformático utilizado en estudios reales. El repositorio facilita la reproducibilidad del análisis y contribuye a la comprensión de cómo los cambios epigenéticos pueden estar relacionados con el desarrollo de enfermedades metabólicas.
 
 ## Licencia
 Este proyecto se distribuye bajo la licencia GPL-2.0.
