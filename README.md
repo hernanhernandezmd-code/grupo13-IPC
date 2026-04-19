@@ -39,6 +39,7 @@ Estos resultados permiten identificar posibles biomarcadores epigeneticos con po
 - Bash
 - R/Bioconnductor
 - Microarreglos Illumina
+- Python
 
 ## Conclusión
 Este proyecto permitió estructurar y documentar un flujo de trabajo orientado al analisis metilómico en el contexto de la diabetes tipo 2.
